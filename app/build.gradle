@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -24,11 +25,32 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
     implementation 'androidx.core:core-ktx:1.1.0-alpha04'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+
+    implementation 'com.google.android.material:material:1.1.0-alpha04'
+
+//    Firebase
+    implementation 'com.google.firebase:firebase-database:16.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+
+//    PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+//    Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+//    Banner Slider
+    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
+
+//    Spots Progress Dialog
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+
+//    EasyFlipViewPager
+    implementation 'com.wajahatkarim3.easyflipviewpager:easyflipviewpager:1.0.0'
 }
