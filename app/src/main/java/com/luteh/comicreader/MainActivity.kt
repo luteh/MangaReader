@@ -1,6 +1,7 @@
 package com.luteh.comicreader
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -28,8 +29,8 @@ class MainActivity : AppCompatActivity(), IBannerLoadDoneListener, IComicLoadDon
 
         rv_comic.adapter = MyComicAdapter(this, comicList)
         tv_comic.text = StringBuilder("NEW COMIC (")
-                .append(comicList.size)
-                .append(")")
+            .append(comicList.size)
+            .append(")")
 
         if (swipe_to_refresh.isRefreshing) {
             swipe_to_refresh.isRefreshing = false
@@ -65,9 +66,9 @@ class MainActivity : AppCompatActivity(), IBannerLoadDoneListener, IComicLoadDon
 
 //        Init dialog
         alertDialog = SpotsDialog.Builder().setContext(this@MainActivity)
-                .setCancelable(false)
-                .setMessage("Please wait...")
-                .build()
+            .setCancelable(false)
+            .setMessage("Please wait...")
+            .build()
 
 //        First, load banner and comic
         swipe_to_refresh.setColorSchemeColors(R.color.colorPrimary, R.color.colorPrimaryDark)
@@ -84,6 +85,10 @@ class MainActivity : AppCompatActivity(), IBannerLoadDoneListener, IComicLoadDon
 
         rv_comic.setHasFixedSize(true)
         rv_comic.layoutManager = GridLayoutManager(this, 2)
+
+        btn_show_filter_search.setOnClickListener {
+            startActivity(Intent(this, FilterSearchActivity::class.java))
+        }
     }
 
     private fun loadComics() {
