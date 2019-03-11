@@ -5,41 +5,41 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.luteh.comicreader.ChapterActivity
 import com.luteh.comicreader.R
+import com.luteh.comicreader.ViewComicActivity
 import com.luteh.comicreader.`interface`.IRecyclerClick
 import com.luteh.comicreader.common.Common
-import com.luteh.comicreader.model.Comic
-import com.squareup.picasso.Picasso
+import com.luteh.comicreader.model.Chapter
+import kotlinx.android.synthetic.main.chapter_item.view.*
+import ss.com.bannerslider.Slider.init
 
 /**
  * Created by Luthfan Maftuh on 11/03/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class MyComicAdapter(
-    internal var context: Context,
-    internal var comicList: List<Comic>
-) : RecyclerView.Adapter<MyComicAdapter.MyViewHolder>() {
+class MyChapterAdapter(
+        internal var context: Context,
+        internal var chapterList: List<Chapter>
+) : RecyclerView.Adapter<MyChapterAdapter.MyViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.comic_item, parent, false)
-        return MyViewHolder(itemView)
+        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.chapter_item, parent, false))
     }
 
     override fun getItemCount(): Int {
-        return comicList.size
+        return chapterList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Picasso.get().load(comicList[position].Image).into(holder.iv_comic_item)
-        holder.tv_comic_name_item.text = comicList[position].Name
+        holder.tv_chapter_number_item.text = chapterList[position].Name
 
         holder.setClick(object : IRecyclerClick {
             override fun onClick(view: View, position: Int) {
-                context.startActivity(Intent(context, ChapterActivity::class.java))
-                Common.selectedComic = comicList[position]
+                Common.selectedChapter = chapterList[position]
+                Common.chapterIndex = position
+                context.startActivity(Intent(context, ViewComicActivity::class.java))
             }
         })
     }
@@ -49,18 +49,15 @@ class MyComicAdapter(
             iRecyclerClick.onClick(v!!, adapterPosition)
         }
 
-        var iv_comic_item: ImageView
-        var tv_comic_name_item: TextView
-
-        lateinit var iRecyclerClick: IRecyclerClick
+        internal var tv_chapter_number_item: TextView
+        internal lateinit var iRecyclerClick: IRecyclerClick
 
         fun setClick(iRecyclerClick: IRecyclerClick) {
             this.iRecyclerClick = iRecyclerClick
         }
 
         init {
-            iv_comic_item = itemView.findViewById(R.id.iv_comic_item) as ImageView
-            tv_comic_name_item = itemView.findViewById(R.id.tv_comic_name_item) as TextView
+            tv_chapter_number_item = itemView.findViewById(R.id.tv_chapter_number_item) as TextView
 
             itemView.setOnClickListener(this)
         }
