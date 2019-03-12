@@ -94,4 +94,9 @@ class MainActivity : BaseActivity(), MainContract.View {
             swipe_to_refresh.isRefreshing = false
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.unsubscribe()
+    }
 }
