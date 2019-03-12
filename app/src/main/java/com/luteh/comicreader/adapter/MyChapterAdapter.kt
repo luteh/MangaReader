@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.luteh.comicreader.R
-import com.luteh.comicreader.ViewComicActivity
+import com.luteh.comicreader.ui.viewcomic.ViewComicActivity
 import com.luteh.comicreader.`interface`.IRecyclerClick
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Chapter
-import kotlinx.android.synthetic.main.chapter_item.view.*
-import ss.com.bannerslider.Slider.init
 
 /**
  * Created by Luthfan Maftuh on 11/03/2019.

@@ -1,4 +1,4 @@
-package com.luteh.comicreader
+package com.luteh.comicreader.ui.filtersearch
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.luteh.comicreader.R
 import com.luteh.comicreader.adapter.MyComicAdapter
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Comic

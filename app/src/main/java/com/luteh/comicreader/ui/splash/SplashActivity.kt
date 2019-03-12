@@ -1,9 +1,11 @@
-package com.luteh.comicreader
+package com.luteh.comicreader.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.luteh.comicreader.R
+import com.luteh.comicreader.ui.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 

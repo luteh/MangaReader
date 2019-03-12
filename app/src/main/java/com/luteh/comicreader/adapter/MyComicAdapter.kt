@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.luteh.comicreader.ChapterActivity
+import com.luteh.comicreader.ui.chapter.ChapterActivity
 import com.luteh.comicreader.R
 import com.luteh.comicreader.`interface`.IRecyclerClick
 import com.luteh.comicreader.common.Common
@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso
  */
 class MyComicAdapter(
     internal var context: Context,
-    internal var comicList: List<Comic>
+    internal var comicList: MutableList<Comic>
 ) : RecyclerView.Adapter<MyComicAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.comic_item, parent, false)

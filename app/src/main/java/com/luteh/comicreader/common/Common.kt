@@ -13,7 +13,7 @@ object Common {
         return finalResult.toString()
     }
 
-    var comicList: List<Comic> = ArrayList()
+    var comicList: MutableList<Comic> = ArrayList()
     var selectedComic: Comic? = null
     lateinit var chapterList: List<Chapter>
     lateinit var selectedChapter: Chapter
