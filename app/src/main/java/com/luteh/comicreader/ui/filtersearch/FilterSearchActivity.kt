@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.luteh.comicreader.R
-import com.luteh.comicreader.adapter.MyComicAdapter
+import com.luteh.comicreader.ui.adapter.MyComicAdapter
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Comic
 import kotlinx.android.synthetic.main.activity_filter_search.*

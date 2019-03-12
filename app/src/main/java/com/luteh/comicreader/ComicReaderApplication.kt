@@ -9,7 +9,7 @@ import com.luteh.comicreader.di.module.ApplicationModule
  * Created by Luthfan Maftuh on 12/03/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class BaseApp : Application() {
+class ComicReaderApplication : Application() {
 
     lateinit var component: ApplicationComponent
 
@@ -34,6 +34,6 @@ class BaseApp : Application() {
     }
 
     companion object {
-        lateinit var instance: BaseApp private set
+        lateinit var instance: ComicReaderApplication private set
     }
 }

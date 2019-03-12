@@ -1,4 +1,4 @@
-package com.luteh.comicreader.adapter
+package com.luteh.comicreader.ui.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.luteh.comicreader.ui.chapter.ChapterActivity
 import com.luteh.comicreader.R
-import com.luteh.comicreader.`interface`.IRecyclerClick
+import com.luteh.comicreader.common.utils.IRecyclerClick
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Comic
 import com.squareup.picasso.Picasso

@@ -1,4 +1,4 @@
-package com.luteh.comicreader.adapter
+package com.luteh.comicreader.ui.viewcomic
 
 import android.content.Context
 import android.view.LayoutInflater

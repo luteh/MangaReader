@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.luteh.comicreader.R
-import com.luteh.comicreader.adapter.MyViewPagerAdapter
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Chapter
 import com.wajahatkarim3.easyflipviewpager.BookFlipPageTransformer

@@ -1,7 +1,7 @@
 package com.luteh.comicreader.di.module
 
 import android.app.Application
-import com.luteh.comicreader.BaseApp
+import com.luteh.comicreader.ComicReaderApplication
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,11 +11,11 @@ import javax.inject.Singleton
  * Email luthfanmaftuh@gmail.com
  */
 @Module
-class ApplicationModule(private val baseApp: BaseApp) {
+class ApplicationModule(private val comicReaderApplication: ComicReaderApplication) {
 
     @Provides
     @Singleton
     fun provideApplication(): Application {
-        return baseApp
+        return comicReaderApplication
     }
 }

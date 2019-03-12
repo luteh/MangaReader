@@ -1,6 +1,6 @@
 package com.luteh.comicreader.di.component
 
-import com.luteh.comicreader.BaseApp
+import com.luteh.comicreader.ComicReaderApplication
 import com.luteh.comicreader.di.module.ApplicationModule
 import dagger.Component
 
@@ -10,5 +10,5 @@ import dagger.Component
  */
 @Component(modules = arrayOf(ApplicationModule::class))
 interface ApplicationComponent {
-    fun inject(application: BaseApp)
+    fun inject(application: ComicReaderApplication)
 }

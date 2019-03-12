@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.luteh.comicreader.R
-import com.luteh.comicreader.adapter.MyChapterAdapter
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Comic
 import kotlinx.android.synthetic.main.activity_chapter.*

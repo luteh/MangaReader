@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.luteh.comicreader.R
-import com.luteh.comicreader.adapter.MyComicAdapter
-import com.luteh.comicreader.adapter.MySliderAdapter
 import com.luteh.comicreader.common.base.BaseActivity
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.di.component.DaggerActivityComponent
 import com.luteh.comicreader.di.module.ActivityModule
 import com.luteh.comicreader.model.Comic
 import com.luteh.comicreader.service.PicassoImageLoadingService
+import com.luteh.comicreader.ui.adapter.MyComicAdapter
 import com.luteh.comicreader.ui.filtersearch.FilterSearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ss.com.bannerslider.Slider

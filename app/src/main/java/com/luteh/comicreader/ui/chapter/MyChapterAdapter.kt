@@ -1,4 +1,4 @@
-package com.luteh.comicreader.adapter
+package com.luteh.comicreader.ui.chapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.luteh.comicreader.R
 import com.luteh.comicreader.ui.viewcomic.ViewComicActivity
-import com.luteh.comicreader.`interface`.IRecyclerClick
+import com.luteh.comicreader.common.utils.IRecyclerClick
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Chapter
 
@@ -23,7 +23,13 @@ class MyChapterAdapter(
 ) : RecyclerView.Adapter<MyChapterAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.chapter_item, parent, false))
+        return MyViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.chapter_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {

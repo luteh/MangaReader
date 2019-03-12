@@ -1,4 +1,4 @@
-package com.luteh.comicreader.adapter
+package com.luteh.comicreader.ui.main
 
 import ss.com.bannerslider.adapters.SliderAdapter
 import ss.com.bannerslider.viewholder.ImageSlideViewHolder

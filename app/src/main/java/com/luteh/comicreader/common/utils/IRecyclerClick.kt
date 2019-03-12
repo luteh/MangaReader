@@ -1,4 +1,4 @@
-package com.luteh.comicreader.`interface`
+package com.luteh.comicreader.common.utils
 
 import android.view.View
 
