@@ -2,30 +2,40 @@ package com.luteh.comicreader.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.luteh.comicreader.R
 import com.luteh.comicreader.adapter.MyComicAdapter
 import com.luteh.comicreader.adapter.MySliderAdapter
+import com.luteh.comicreader.common.base.BaseActivity
 import com.luteh.comicreader.common.Common
+import com.luteh.comicreader.di.component.DaggerActivityComponent
+import com.luteh.comicreader.di.module.ActivityModule
 import com.luteh.comicreader.model.Comic
 import com.luteh.comicreader.service.PicassoImageLoadingService
 import com.luteh.comicreader.ui.filtersearch.FilterSearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ss.com.bannerslider.Slider
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity : BaseActivity(), MainContract.View {
 
-    private lateinit var presenter: MainContract.Presenter
+    @Inject
+    lateinit var presenter: MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter = MainPresenter(this)
+        presenter.attach(this)
         initView()
+    }
+
+    override fun injectDependencyIfNeed() {
+        val mainComponent = DaggerActivityComponent.builder()
+            .activityModule(ActivityModule(this))
+            .build()
+        mainComponent.inject(this)
     }
 
     private fun initView() {

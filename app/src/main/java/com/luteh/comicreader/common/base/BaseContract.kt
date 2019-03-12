@@ -1,4 +1,4 @@
-package com.luteh.comicreader.ui
+package com.luteh.comicreader.common.base
 
 /**
  * Created by Luthfan Maftuh on 12/03/2019.

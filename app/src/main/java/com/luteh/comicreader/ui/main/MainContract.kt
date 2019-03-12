@@ -1,7 +1,7 @@
 package com.luteh.comicreader.ui.main
 
 import com.luteh.comicreader.model.Comic
-import com.luteh.comicreader.ui.BaseContract
+import com.luteh.comicreader.common.base.BaseContract
 
 /**
  * Created by Luthfan Maftuh on 12/03/2019.
