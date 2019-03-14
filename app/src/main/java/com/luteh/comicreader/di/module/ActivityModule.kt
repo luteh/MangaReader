@@ -2,6 +2,8 @@ package com.luteh.comicreader.di.module
 
 import android.app.Activity
 import android.app.Application
+import com.luteh.comicreader.ui.chapter.ChapterContract
+import com.luteh.comicreader.ui.chapter.ChapterPresenter
 import com.luteh.comicreader.ui.main.MainContract
 import com.luteh.comicreader.ui.main.MainPresenter
 import dagger.Module
@@ -22,5 +24,10 @@ class ActivityModule(private val activity: Activity) {
     @Provides
     fun provideMainPresenter(): MainContract.Presenter {
         return MainPresenter()
+    }
+
+    @Provides
+    fun provideChapterPresenter(): ChapterContract.Presenter {
+        return ChapterPresenter()
     }
 }

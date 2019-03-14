@@ -104,6 +104,7 @@ class MainPresenter : MainContract.Presenter {
 
     /**
      * Create Observable to get Comic data from firebase database
+     * Emits datasnapshot list
      */
     private fun getComicData(): Single<MutableList<Comic>> {
         return Single.create { emitter ->
