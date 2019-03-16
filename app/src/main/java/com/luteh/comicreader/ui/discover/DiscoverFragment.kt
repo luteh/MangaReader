@@ -17,13 +17,10 @@ import com.luteh.comicreader.di.component.DaggerFragmentComponent
 import com.luteh.comicreader.di.module.FragmentModule
 import com.luteh.comicreader.model.Comic
 import com.luteh.comicreader.model.Manga
-import com.luteh.comicreader.service.PicassoImageLoadingService
 import com.luteh.comicreader.ui.adapter.MangaAdapter
 import com.luteh.comicreader.ui.filtersearch.FilterSearchActivity
 import com.luteh.comicreader.ui.main.DiscoverContract
-import com.luteh.comicreader.ui.main.SliderAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import ss.com.bannerslider.Slider
+import kotlinx.android.synthetic.main.fragment_discover.*
 import javax.inject.Inject
 
 /**
@@ -36,8 +33,8 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     lateinit var presenter: DiscoverContract.Presenter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_discover, container, false)
@@ -45,13 +42,12 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
 
     override fun injectDependency() {
         val discoverComponent = DaggerFragmentComponent.builder()
-            .fragmentModule(FragmentModule())
-            .build()
+                .fragmentModule(FragmentModule())
+                .build()
         discoverComponent.inject(this)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onInit() {
         presenter.attach(this)
         initView()
     }
@@ -61,34 +57,34 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
 
         initSwipeRefresh()
 
-        Slider.init(PicassoImageLoadingService())
+//        Slider.init(PicassoImageLoadingService())
 
-        btn_show_filter_search.setOnClickListener {
-            startActivity(Intent(it.context, FilterSearchActivity::class.java))
-        }
-
-        presenter.loadMangaListData()
+//        presenter.loadMangaListData()
+        pb_discover.visibility = View.VISIBLE
     }
 
     @SuppressLint("ResourceAsColor")
     private fun initSwipeRefresh() {
         //        First, load banner and comic
         swipe_to_refresh.setColorSchemeColors(
-            R.color.colorPrimary,
-            R.color.colorPrimaryDark
+                R.color.colorPrimary,
+                R.color.colorPrimaryDark
         )
         swipe_to_refresh.setOnRefreshListener {
-            presenter.loadBannerData()
-            presenter.loadComicData()
+            //            presenter.loadBannerData()
+//            presenter.loadComicData()
+            presenter.loadMangaListData()
         }
         swipe_to_refresh.post {
-            presenter.loadBannerData()
-            presenter.loadComicData()
+            //            presenter.loadBannerData()
+//            presenter.loadComicData()
+            presenter.loadMangaListData()
         }
     }
 
     private fun initRecycler() {
-        rv_comic.apply {
+        rv_discover.apply {
+            visibility = View.GONE
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 3)
         }
@@ -100,7 +96,7 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     }
 
     override fun onBannerLoadDoneListener(bannerList: ArrayList<String>) {
-        slider.setAdapter(SliderAdapter(bannerList))
+//        slider.setAdapter(SliderAdapter(bannerList))
     }
 
     override fun onComicLoadDoneListener(comicList: MutableList<Comic>) {
@@ -122,6 +118,13 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     }
 
     override fun onSuccessLoadMangaListData(mangaList: List<Manga>) {
-        rv_comic.adapter = MangaAdapter(this.activity!!, mangaList)
+        pb_discover.visibility = View.GONE
+        rv_discover.visibility = View.VISIBLE
+
+        rv_discover.adapter = MangaAdapter(this.activity!!, mangaList)
+
+        if (swipe_to_refresh.isRefreshing) {
+            swipe_to_refresh.isRefreshing = false
+        }
     }
 }

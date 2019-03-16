@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="columnColor">#F44A3E</color>
     <color name="textColor">#FEFEFE</color>
+
+    <color name="colorBackgroundDefault">#ffffff</color>
+    <color name="colorBackground">#F2F2F2</color>
 </resources>

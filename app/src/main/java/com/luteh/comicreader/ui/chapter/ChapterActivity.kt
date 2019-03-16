@@ -19,6 +19,9 @@ import javax.inject.Inject
  * Email luthfanmaftuh@gmail.com
  */
 class ChapterActivity : BaseActivity(), ChapterContract.View {
+    override fun onInit() {
+
+    }
 
     @Inject
     lateinit var presenter: ChapterContract.Presenter

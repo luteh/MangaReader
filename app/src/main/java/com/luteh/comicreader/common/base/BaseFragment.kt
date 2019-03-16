@@ -2,6 +2,7 @@ package com.luteh.comicreader.common.base
 
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 
 
@@ -17,4 +18,11 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected abstract fun injectDependency()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onInit()
+    }
+
+    abstract fun onInit()
 }

@@ -1,9 +1,10 @@
 package com.luteh.comicreader.common.base
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.luteh.comicreader.R
 
 
 /**
@@ -11,6 +12,9 @@ import androidx.fragment.app.Fragment
  * Email luthfanmaftuh@gmail.com
  */
 abstract class BaseActivity : AppCompatActivity() {
+
+    private val TAG = "BaseActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,11 +23,20 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected abstract fun injectDependencyIfNeed()
 
-    fun loadFragment(containerViewId: Int, fragment: Fragment) {
-        // load fragment
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(containerViewId, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+    override fun setContentView(layoutResID: Int) {
+        super.setContentView(layoutResID)
+
+        onInit()
+    }
+
+    abstract fun onInit()
+
+
+    // Replace current Fragment with the destination Fragment.
+    fun replaceFragment(destFragment: Fragment) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fl_home_container, destFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
     }
 }

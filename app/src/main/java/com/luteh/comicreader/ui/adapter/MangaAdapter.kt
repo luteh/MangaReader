@@ -24,7 +24,7 @@ class MangaAdapter(
     internal var mangaList: List<Manga>
 ) : RecyclerView.Adapter<MangaAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.comic_item, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.manga_item, parent, false)
         return MyViewHolder(itemView)
     }
 

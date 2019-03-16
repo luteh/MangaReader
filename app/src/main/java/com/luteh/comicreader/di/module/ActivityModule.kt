@@ -5,8 +5,6 @@ import com.luteh.comicreader.ui.chapter.ChapterContract
 import com.luteh.comicreader.ui.chapter.ChapterPresenter
 import com.luteh.comicreader.ui.main.DiscoverContract
 import com.luteh.comicreader.ui.main.DiscoverPresenter
-import com.luteh.comicreader.ui.main.MainContract
-import com.luteh.comicreader.ui.main.MainPresenter
 import dagger.Module
 import dagger.Provides
 
@@ -19,11 +17,6 @@ class ActivityModule(private val activity: Activity) {
     @Provides
     fun provideActivity(): Activity {
         return activity
-    }
-
-    @Provides
-    fun provideMainPresenter(): MainContract.Presenter {
-        return MainPresenter()
     }
 
     @Provides

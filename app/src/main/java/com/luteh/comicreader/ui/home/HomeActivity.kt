@@ -1,9 +1,7 @@
 package com.luteh.comicreader.ui.home
 
 import android.os.Bundle
-import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import com.luteh.comicreader.R
 import com.luteh.comicreader.common.base.BaseActivity
 import com.luteh.comicreader.ui.discover.DiscoverFragment
@@ -18,7 +16,7 @@ class HomeActivity : BaseActivity() {
         when (item.itemId) {
             R.id.nav_discover -> {
 //                Toast.makeText(, "Clicked", Toast.LENGTH_SHORT).show();
-                loadFragment(R.id.fl_home_container, DiscoverFragment())
+                replaceFragment(DiscoverFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_favorite -> {
@@ -38,5 +36,9 @@ class HomeActivity : BaseActivity() {
         setContentView(R.layout.activity_home)
 
         bnv_home.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    override fun onInit() {
+        replaceFragment(DiscoverFragment())
     }
 }
