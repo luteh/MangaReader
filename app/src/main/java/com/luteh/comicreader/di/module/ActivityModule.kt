@@ -1,14 +1,14 @@
 package com.luteh.comicreader.di.module
 
 import android.app.Activity
-import android.app.Application
 import com.luteh.comicreader.ui.chapter.ChapterContract
 import com.luteh.comicreader.ui.chapter.ChapterPresenter
+import com.luteh.comicreader.ui.main.DiscoverContract
+import com.luteh.comicreader.ui.main.DiscoverPresenter
 import com.luteh.comicreader.ui.main.MainContract
 import com.luteh.comicreader.ui.main.MainPresenter
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 /**
  * Created by Luthfan Maftuh on 12/03/2019.

@@ -8,7 +8,7 @@ import com.luteh.comicreader.model.Manga
  * Created by Luthfan Maftuh on 12/03/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class MainContract {
+class DiscoverContract {
     interface View : BaseContract.View {
         fun showErrorMessage(message: String)
         fun onBannerLoadDoneListener(bannerList: ArrayList<String>)
@@ -16,7 +16,7 @@ class MainContract {
         fun onSuccessLoadMangaListData(mangaList: List<Manga>)
     }
 
-    interface Presenter : BaseContract.Presenter<MainContract.View> {
+    interface Presenter : BaseContract.Presenter<DiscoverContract.View> {
         fun loadBannerData()
         fun loadComicData()
         fun loadMangaListData()

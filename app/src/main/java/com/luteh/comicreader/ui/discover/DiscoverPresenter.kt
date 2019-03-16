@@ -18,11 +18,11 @@ import io.reactivex.schedulers.Schedulers
  * Created by Luthfan Maftuh on 12/03/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class MainPresenter : MainContract.Presenter {
+class DiscoverPresenter : DiscoverContract.Presenter {
 
     private val TAG = "DiscoverPresenter"
 
-    private lateinit var view: MainContract.View
+    private lateinit var view: DiscoverContract.View
     private val subscriptions = CompositeDisposable()
     private val api: ApiServiceInterface = ApiServiceInterface.create()
 
@@ -35,7 +35,7 @@ class MainPresenter : MainContract.Presenter {
         subscriptions.clear()
     }
 
-    override fun attach(view: MainContract.View) {
+    override fun attach(view: DiscoverContract.View) {
         this.view = view
 
     }

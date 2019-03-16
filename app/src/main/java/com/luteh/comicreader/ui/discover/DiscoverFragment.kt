@@ -1,40 +1,59 @@
-package com.luteh.comicreader.ui.main
+package com.luteh.comicreader.ui.discover
+
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
+import android.app.Fragment
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+
 import com.luteh.comicreader.R
-import com.luteh.comicreader.common.base.BaseActivity
-import com.luteh.comicreader.di.component.DaggerActivityComponent
-import com.luteh.comicreader.di.module.ActivityModule
+import com.luteh.comicreader.common.base.BaseFragment
+import com.luteh.comicreader.di.component.DaggerFragmentComponent
+import com.luteh.comicreader.di.module.FragmentModule
 import com.luteh.comicreader.model.Comic
 import com.luteh.comicreader.model.Manga
 import com.luteh.comicreader.service.PicassoImageLoadingService
 import com.luteh.comicreader.ui.adapter.MangaAdapter
 import com.luteh.comicreader.ui.filtersearch.FilterSearchActivity
+import com.luteh.comicreader.ui.main.DiscoverContract
+import com.luteh.comicreader.ui.main.SliderAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import ss.com.bannerslider.Slider
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), MainContract.View {
-    // TODO: 16/03/2019 Delete main package and files at once
-    @Inject
-    lateinit var presenter: MainContract.Presenter
+/**
+ * A simple [Fragment] subclass.
+ *
+ */
+class DiscoverFragment : BaseFragment(), DiscoverContract.View {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        presenter.attach(this)
-        initView()
+    @Inject
+    lateinit var presenter: DiscoverContract.Presenter
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_discover, container, false)
     }
 
-    override fun injectDependencyIfNeed() {
-        val mainComponent = DaggerActivityComponent.builder()
-            .activityModule(ActivityModule(this))
+    override fun injectDependency() {
+        val discoverComponent = DaggerFragmentComponent.builder()
+            .fragmentModule(FragmentModule())
             .build()
-        mainComponent.inject(this)
+        discoverComponent.inject(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.attach(this)
+        initView()
     }
 
     private fun initView() {
@@ -45,7 +64,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         Slider.init(PicassoImageLoadingService())
 
         btn_show_filter_search.setOnClickListener {
-            startActivity(Intent(this, FilterSearchActivity::class.java))
+            startActivity(Intent(it.context, FilterSearchActivity::class.java))
         }
 
         presenter.loadMangaListData()
@@ -77,7 +96,7 @@ class MainActivity : BaseActivity(), MainContract.View {
 
 
     override fun showErrorMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onBannerLoadDoneListener(bannerList: ArrayList<String>) {
@@ -103,6 +122,6 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun onSuccessLoadMangaListData(mangaList: List<Manga>) {
-        rv_comic.adapter = MangaAdapter(this, mangaList)
+        rv_comic.adapter = MangaAdapter(this.activity!!, mangaList)
     }
 }

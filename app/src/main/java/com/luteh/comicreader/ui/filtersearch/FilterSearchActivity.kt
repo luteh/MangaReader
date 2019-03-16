@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.luteh.comicreader.R
-import com.luteh.comicreader.ui.adapter.MyComicAdapter
 import com.luteh.comicreader.common.Common
 import com.luteh.comicreader.model.Comic
 import kotlinx.android.synthetic.main.activity_filter_search.*
@@ -60,7 +59,7 @@ class FilterSearchActivity : AppCompatActivity() {
         }
 
         if (comicSearched.size > 0) {
-            rv_filter_search.adapter = MyComicAdapter(this, comicSearched)
+//            rv_filter_search.adapter = MangaAdapter(this, comicSearched)
         } else {
             Toast.makeText(this, "No Result", Toast.LENGTH_SHORT).show()
         }
@@ -127,7 +126,7 @@ class FilterSearchActivity : AppCompatActivity() {
         }
 
         if (comicFiltered.size > 0) {
-            rv_filter_search.adapter = MyComicAdapter(this, comicFiltered)
+//            rv_filter_search.adapter = MangaAdapter(this, comicFiltered)
         } else {
             Toast.makeText(this, "No Result", Toast.LENGTH_SHORT).show()
         }
