@@ -16,8 +16,8 @@ interface ApiServiceInterface {
 
     @GET("api/list/0/")
     fun getMangaList(
-        @Query("p") index: Int,
-        @Query("l") totalItems: Int = 25
+//        @Query("p") index: Int
+//        @Query("l") totalItems: Int = 25
     ): Observable<MangaList>
 
     companion object Factory {

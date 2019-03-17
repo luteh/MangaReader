@@ -38,10 +38,10 @@ class DiscoverPresenter : DiscoverContract.Presenter {
      * Load manga list data from API
      */
     override fun loadMangaListData() {
-        val subscribe = api.getMangaList(0).subscribeOn(Schedulers.io())
+        val subscribe = api.getMangaList().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ mangaList ->
-                Log.d(TAG, "onSuccess: ${mangaList.manga[1].title}")
+                Log.d(TAG, "Manga size: ${mangaList.manga.size}")
                 view.onSuccessLoadMangaListData(mangaList.manga)
             },
                 { error -> Log.e(TAG, "onError: $error") })

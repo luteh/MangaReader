@@ -19,6 +19,7 @@ import com.luteh.mangareader.model.Manga
 import com.luteh.mangareader.ui.adapter.MangaAdapter
 import com.luteh.mangareader.ui.main.DiscoverContract
 import kotlinx.android.synthetic.main.discover_fragment.*
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -101,6 +102,11 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     override fun onSuccessLoadMangaListData(mangaList: List<Manga>) {
         pb_discover.visibility = View.GONE
         rv_discover.visibility = View.VISIBLE
+
+        // To descending sort of mangaList
+        Collections.sort(mangaList) { o1, o2 ->
+            o2.lastChapterDate.compareTo(o1.lastChapterDate)
+        }
 
         rv_discover.adapter = MangaAdapter(this.activity!!, mangaList)
 
