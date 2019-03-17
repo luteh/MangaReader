@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Base Color-->
+    <color name="colorPrimary">#9fa8da</color>
+    <color name="colorPrimaryDark">#6f79a8</color>
+    <color name="colorPrimaryLight">#d1d9ff</color>
+    <color name="colorAccent">#bbb5c3</color>
+    <color name="colorSecondary">#ede7f6</color>
+    <color name="colorSecondaryLight">#ffffff</color>
+    <color name="colorOnPrimary">#000000</color>
+    <color name="colorOnSecondary">#000000</color>
+
+
+    <color name="columnColor">#F44A3E</color>
+    <color name="textColor">#FEFEFE</color>
+    <color name="colorBlackTransparentText">#A1000000</color>
+
+    <color name="colorBackgroundDefault">#ffffff</color>
+    <color name="colorBackground">#F2F2F2</color>
+</resources>
