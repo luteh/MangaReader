@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/SelectableItemBackground"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:elevation="20dp"
-    app:cardCornerRadius="4dp">
+    android:layout_margin="@dimen/margin_default"
+    app:cardCornerRadius="@dimen/card_corner_default"
+    app:cardElevation="@dimen/card_elevation_default">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,5 +31,5 @@
             android:text="COMIC NAME"
             android:textColor="@android:color/black" />
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
 
