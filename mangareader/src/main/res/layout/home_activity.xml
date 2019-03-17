@@ -21,7 +21,7 @@
             app:titleTextColor="@color/colorOnPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_home"/>
+    <include layout="@layout/home_content"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_home"
