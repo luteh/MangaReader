@@ -9,15 +9,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
+import com.jakewharton.rxbinding3.view.clicks
+import com.jakewharton.rxbinding3.widget.textChanges
 
 import com.luteh.mangareader.R
+import com.luteh.mangareader.common.Common
 import com.luteh.mangareader.common.base.BaseFragment
 import com.luteh.mangareader.di.component.DaggerFragmentComponent
 import com.luteh.mangareader.di.module.FragmentModule
 import com.luteh.mangareader.model.Manga
 import com.luteh.mangareader.ui.adapter.MangaAdapter
 import com.luteh.mangareader.ui.main.DiscoverContract
+import io.reactivex.Observable
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.discover_dialog_sort_by.view.*
 import kotlinx.android.synthetic.main.discover_fragment.*
 import java.util.*
 import javax.inject.Inject
@@ -30,6 +39,8 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
 
     @Inject
     lateinit var presenter: DiscoverContract.Presenter
+
+    private lateinit var dialog: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,12 +67,70 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
 
         initSwipeRefresh()
 
+        btn_discover_sort_by.setOnClickListener { showSortByDialog() }
+
 //        Slider.init(PicassoImageLoadingService())
 
 //        presenter.loadMangaListData()
         pb_discover.visibility = View.VISIBLE
         rv_discover.visibility = View.GONE
     }
+
+    /**
+     * To show sort by dialog
+     */
+    private fun showSortByDialog() {
+        if (!::dialog.isInitialized) {
+            val view = LayoutInflater.from(context).inflate(R.layout.discover_dialog_sort_by, null)
+            dialog = AlertDialog.Builder(context!!)
+                .setTitle(R.string.title_dialog_sort_by)
+                .setView(view)
+                .create()
+
+            // Handle radio group listener
+            view.rb_discover_dialog_updated.isChecked = true
+            view.rg_discover_dialog_sort_by.setOnCheckedChangeListener { group, checkedId ->
+                when (checkedId) {
+                    R.id.rb_discover_dialog_name -> {
+                        sortAdapter(0, view.rb_discover_dialog_name.text)
+                        view.rb_discover_dialog_name.isChecked = true
+                        dialog.dismiss()
+                    }
+                    R.id.rb_discover_dialog_popular -> {
+                        sortAdapter(1, view.rb_discover_dialog_popular.text)
+                        view.rb_discover_dialog_popular.isChecked = true
+                        dialog.dismiss()
+                    }
+                    R.id.rb_discover_dialog_updated -> {
+                        sortAdapter(2, view.rb_discover_dialog_updated.text)
+                        view.rb_discover_dialog_updated.isChecked = true
+                        dialog.dismiss()
+                    }
+                }
+            }
+        }
+
+        dialog.show()
+    }
+
+    /**
+     * To sorting adapter items
+     * @param   sortOption  Sorting options that selected by user
+     */
+    private fun sortAdapter(sortOption: Int, optionText: CharSequence) {
+        tv_discover_sort_by.text = optionText
+
+        Collections.sort(Common.mangaList) { o1, o2 ->
+            when (sortOption) {
+                1 -> o2.hits.compareTo(o1.hits)
+                2 -> o2.lastChapterDate.compareTo(o1.lastChapterDate)
+                else -> o1.title.compareTo(o2.title)
+            }
+        }
+        // TODO: 18/03/2019 Implement DiffUtils to changes adapter value instead of re-init adapter
+        rv_discover.adapter = MangaAdapter(this.activity!!, Common.mangaList)
+    }
+
 
     @SuppressLint("ResourceAsColor")
     private fun initSwipeRefresh() {
@@ -103,12 +172,9 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
         pb_discover.visibility = View.GONE
         rv_discover.visibility = View.VISIBLE
 
-        // To descending sort of mangaList
-        Collections.sort(mangaList) { o1, o2 ->
-            o2.lastChapterDate.compareTo(o1.lastChapterDate)
-        }
+        Common.mangaList = mangaList
 
-        rv_discover.adapter = MangaAdapter(this.activity!!, mangaList)
+        sortAdapter(2, resources.getText(R.string.label_sort_by_updated))
 
         if (swipe_to_refresh.isRefreshing) {
             swipe_to_refresh.isRefreshing = false

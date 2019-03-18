@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardCornerRadius="@dimen/card_corner_default"
+    app:cardElevation="@dimen/card_elevation_default">
+
+    <RadioGroup
+        style="@style/Widget.MaterialComponents.CompoundButton.RadioButton"
+        android:layout_width="match_parent"
+        android:id="@+id/rg_discover_dialog_sort_by"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_default">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb_discover_dialog_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_sort_by_name" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb_discover_dialog_popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_sort_by_popular" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb_discover_dialog_updated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_sort_by_updated" />
+    </RadioGroup>
+
+</com.google.android.material.card.MaterialCardView>

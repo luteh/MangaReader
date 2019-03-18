@@ -11,12 +11,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/btn_discover_sort_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="@string/title_dialog_sort_by"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/tv_discover_sort_by"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:clickable="false"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                tools:text="Updated" />
+
+        </LinearLayout>
+
         <com.luteh.mangareader.common.utils.CustomGridRecyclerView
             android:id="@+id/rv_discover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/btn_discover_sort_by"
             android:layout_centerHorizontal="true"
-            android:layoutAnimation="@anim/grid_layout_anim_from_bottom"/>
+            android:layoutAnimation="@anim/grid_layout_anim_from_bottom" />
 
         <ProgressBar
             android:id="@+id/pb_discover"
