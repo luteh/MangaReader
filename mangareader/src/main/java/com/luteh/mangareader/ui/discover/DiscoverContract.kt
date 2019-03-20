@@ -11,7 +11,7 @@ import com.luteh.mangareader.model.Manga
 class DiscoverContract {
     interface View : BaseContract.View {
         fun showErrorMessage(message: String)
-        fun onSuccessLoadMangaListData(mangaList: List<Manga>)
+        fun onSuccessLoadMangaListData(mangaList: MutableList<Manga>)
     }
 
     interface Presenter : BaseContract.Presenter<DiscoverContract.View> {

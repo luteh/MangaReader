@@ -20,7 +20,7 @@ object Common {
     lateinit var chapterList: List<Chapter>
     lateinit var selectedChapter: Chapter
     var chapterIndex: Int = -1
-    var mangaList: List<Manga> = ArrayList()
+    var mangaList: MutableList<Manga> = ArrayList()
 
     var categories = arrayOf(
         "Action",

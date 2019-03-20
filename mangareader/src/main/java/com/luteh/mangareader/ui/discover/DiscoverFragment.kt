@@ -11,8 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
-import com.jakewharton.rxbinding3.view.clicks
-import com.jakewharton.rxbinding3.widget.textChanges
+import androidx.recyclerview.widget.RecyclerView
 
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.Common
@@ -20,15 +19,15 @@ import com.luteh.mangareader.common.base.BaseFragment
 import com.luteh.mangareader.di.component.DaggerFragmentComponent
 import com.luteh.mangareader.di.module.FragmentModule
 import com.luteh.mangareader.model.Manga
-import com.luteh.mangareader.ui.adapter.MangaAdapter
+import com.luteh.mangareader.ui.discover.adapter.MangaAdapter
 import com.luteh.mangareader.ui.main.DiscoverContract
-import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.Flowable
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.discover_dialog_sort_by.view.*
 import kotlinx.android.synthetic.main.discover_fragment.*
 import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -41,6 +40,11 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     lateinit var presenter: DiscoverContract.Presenter
 
     private lateinit var dialog: AlertDialog
+
+    private lateinit var adapter: MangaAdapter
+//    private var adapter: RecyclerView.Adapter<*>? = null
+
+    private var disposable: Disposable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -120,15 +124,24 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     private fun sortAdapter(sortOption: Int, optionText: CharSequence) {
         tv_discover_sort_by.text = optionText
 
-        Collections.sort(Common.mangaList) { o1, o2 ->
+        Common.mangaList.sortWith(Comparator { o1, o2 ->
             when (sortOption) {
                 1 -> o2.hits.compareTo(o1.hits)
                 2 -> o2.lastChapterDate.compareTo(o1.lastChapterDate)
                 else -> o1.title.compareTo(o2.title)
             }
-        }
-        // TODO: 18/03/2019 Implement DiffUtils to changes adapter value instead of re-init adapter
-        rv_discover.adapter = MangaAdapter(this.activity!!, Common.mangaList)
+        })
+//         TODO: 18/03/2019 Implement DiffUtils to changes adapter value instead of re-init adapter
+//        rv_discover.adapter = MangaAdapter(this.activity!!, Common.mangaList)
+
+        /*val flowable = Flowable.just(Common.mangaList)
+            .subscribeOn(Schedulers.io())
+
+        disposable = adapter.setDataSource(flowable)
+        */
+//        adapter.updateItem(Common.mangaList)
+        adapter.notifyDataSetChanged()
+
     }
 
 
@@ -168,13 +181,22 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
         presenter.unsubscribe()
     }
 
-    override fun onSuccessLoadMangaListData(mangaList: List<Manga>) {
+    override fun onSuccessLoadMangaListData(mangaList: MutableList<Manga>) {
         pb_discover.visibility = View.GONE
         rv_discover.visibility = View.VISIBLE
 
         Common.mangaList = mangaList
 
-        sortAdapter(2, resources.getText(R.string.label_sort_by_updated))
+//        sortAdapter(2, resources.getText(R.string.label_sort_by_updated))
+
+        tv_discover_sort_by.text = resources.getText(R.string.label_sort_by_updated)
+
+        Common.mangaList.sortWith(Comparator { o1, o2 ->
+            o2.lastChapterDate.compareTo(o1.lastChapterDate)
+        })
+
+        adapter = MangaAdapter(this.activity!!, Common.mangaList)
+        rv_discover.adapter = adapter
 
         if (swipe_to_refresh.isRefreshing) {
             swipe_to_refresh.isRefreshing = false
@@ -189,5 +211,12 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
             initRecycler(R.integer.grid_span_count_landscape)
         else
             initRecycler(R.integer.grid_span_count_portrait)
+    }
+
+    override fun onDestroyView() {
+        if (disposable?.isDisposed ?: false) {
+            disposable?.dispose()
+        }
+        super.onDestroyView()
     }
 }

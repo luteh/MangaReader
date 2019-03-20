@@ -6,7 +6,7 @@ data class MangaList(
     @SerializedName("end")
     val end: Int,
     @SerializedName("manga")
-    val manga: List<Manga>,
+    val manga: MutableList<Manga>,
     @SerializedName("page")
     val page: Int,
     @SerializedName("start")
