@@ -131,6 +131,8 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
                 else -> o1.title.compareTo(o2.title)
             }
         })
+
+//        Common.mangaList.sortByDescending { it.hits }
 //         TODO: 18/03/2019 Implement DiffUtils to changes adapter value instead of re-init adapter
 //        rv_discover.adapter = MangaAdapter(this.activity!!, Common.mangaList)
 
