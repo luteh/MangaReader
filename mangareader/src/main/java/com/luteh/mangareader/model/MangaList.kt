@@ -2,6 +2,7 @@ package com.luteh.mangareader.model
 
 import com.google.gson.annotations.SerializedName
 
+
 data class MangaList(
     @SerializedName("end")
     val end: Int,

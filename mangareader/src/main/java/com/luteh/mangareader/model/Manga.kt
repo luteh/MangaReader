@@ -1,5 +1,6 @@
 package com.luteh.mangareader.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
 data class Manga(
