@@ -1,4 +1,4 @@
-package com.luteh.mangareader.ui.chapter
+package com.luteh.mangareader.ui.activity.chapter
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.luteh.mangareader.R
-import com.luteh.mangareader.ui.viewcomic.ViewComicActivity
+import com.luteh.mangareader.ui.activity.viewcomic.ViewComicActivity
 import com.luteh.mangareader.common.utils.IRecyclerClick
 import com.luteh.mangareader.common.Common
-import com.luteh.mangareader.model.Chapter
+import com.luteh.mangareader.data.model.Chapter
 
 /**
  * Created by Luthfan Maftuh on 11/03/2019.

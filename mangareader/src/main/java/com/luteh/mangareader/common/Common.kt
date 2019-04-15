@@ -1,8 +1,8 @@
 package com.luteh.mangareader.common
 
-import com.luteh.mangareader.model.Chapter
-import com.luteh.mangareader.model.Comic
-import com.luteh.mangareader.model.Manga
+import com.luteh.mangareader.data.model.Chapter
+import com.luteh.mangareader.data.model.Comic
+import com.luteh.mangareader.data.model.Manga
 
 /**
  * Created by Luthfan Maftuh on 11/03/2019.

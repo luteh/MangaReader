@@ -1,7 +1,7 @@
 package com.luteh.mangareader.di.component
 
 import com.luteh.mangareader.di.module.ActivityModule
-import com.luteh.mangareader.ui.chapter.ChapterActivity
+import com.luteh.mangareader.ui.activity.chapter.ChapterActivity
 import dagger.Component
 
 /**

@@ -1,11 +1,11 @@
-package com.luteh.mangareader.ui.viewcomic
+package com.luteh.mangareader.ui.activity.viewcomic
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.Common
-import com.luteh.mangareader.model.Chapter
+import com.luteh.mangareader.data.model.Chapter
 import com.wajahatkarim3.easyflipviewpager.BookFlipPageTransformer
 import kotlinx.android.synthetic.main.activity_view_comic.*
 

@@ -1,9 +1,9 @@
-package com.luteh.mangareader.model
+package com.luteh.mangareader.data.model
 
 import com.google.gson.annotations.SerializedName
 
 
-data class MangaList(
+data class MangaListResponse(
     @SerializedName("end")
     val end: Int,
     @SerializedName("manga")

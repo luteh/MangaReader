@@ -1,8 +1,8 @@
 package com.luteh.mangareader.di.module
 
 import android.app.Activity
-import com.luteh.mangareader.ui.chapter.ChapterContract
-import com.luteh.mangareader.ui.chapter.ChapterPresenter
+import com.luteh.mangareader.ui.activity.chapter.ChapterContract
+import com.luteh.mangareader.ui.activity.chapter.ChapterPresenter
 import dagger.Module
 import dagger.Provides
 

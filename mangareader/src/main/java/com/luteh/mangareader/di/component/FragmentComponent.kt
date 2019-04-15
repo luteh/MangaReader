@@ -1,7 +1,7 @@
 package com.luteh.mangareader.di.component
 
 import com.luteh.mangareader.di.module.FragmentModule
-import com.luteh.mangareader.ui.discover.DiscoverFragment
+import com.luteh.mangareader.ui.fragment.discover.DiscoverFragment
 import dagger.Component
 
 /**

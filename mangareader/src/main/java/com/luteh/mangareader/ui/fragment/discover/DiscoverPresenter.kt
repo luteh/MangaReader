@@ -1,13 +1,9 @@
 package com.luteh.mangareader.ui.main
 
 import android.util.Log
-import com.luteh.mangareader.api.ApiServiceInterface
-import com.luteh.mangareader.common.Constants
-import com.luteh.mangareader.model.Comic
-import io.reactivex.Single
+import com.luteh.mangareader.data.remote.ApiServiceInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 /**

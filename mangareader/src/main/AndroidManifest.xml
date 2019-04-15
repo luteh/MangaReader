@@ -13,14 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.luteh.mangareader.ui.home.HomeActivity"
+            android:name="com.luteh.mangareader.ui.activity.home.HomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_home" />
-        <activity android:name="com.luteh.mangareader.ui.filtersearch.FilterSearchActivity" />
-        <activity android:name="com.luteh.mangareader.ui.viewcomic.ViewComicActivity" />
-        <activity android:name="com.luteh.mangareader.ui.chapter.ChapterActivity" />
+        <activity android:name="com.luteh.mangareader.ui.activity.filtersearch.FilterSearchActivity" />
+        <activity android:name="com.luteh.mangareader.ui.activity.viewcomic.ViewComicActivity" />
+        <activity android:name="com.luteh.mangareader.ui.activity.chapter.ChapterActivity" />
         <activity
-            android:name="com.luteh.mangareader.ui.splash.SplashActivity"
+            android:name="com.luteh.mangareader.ui.activity.splash.SplashActivity"
             android:noHistory="true"
             android:theme="@style/SplashTheme">
             <intent-filter>

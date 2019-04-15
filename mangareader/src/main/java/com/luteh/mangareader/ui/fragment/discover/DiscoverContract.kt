@@ -1,8 +1,7 @@
 package com.luteh.mangareader.ui.main
 
-import com.luteh.mangareader.model.Comic
 import com.luteh.mangareader.common.base.BaseContract
-import com.luteh.mangareader.model.Manga
+import com.luteh.mangareader.data.model.Manga
 
 /**
  * Created by Luthfan Maftuh on 12/03/2019.

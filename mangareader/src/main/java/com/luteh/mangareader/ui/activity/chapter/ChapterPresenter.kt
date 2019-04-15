@@ -1,4 +1,4 @@
-package com.luteh.mangareader.ui.chapter
+package com.luteh.mangareader.ui.activity.chapter
 
 import com.luteh.mangareader.common.Common
 import io.reactivex.disposables.CompositeDisposable

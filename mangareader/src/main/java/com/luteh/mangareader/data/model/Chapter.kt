@@ -1,4 +1,4 @@
-package com.luteh.mangareader.model
+package com.luteh.mangareader.data.model
 
 /**
  * Created by Luthfan Maftuh on 11/03/2019.

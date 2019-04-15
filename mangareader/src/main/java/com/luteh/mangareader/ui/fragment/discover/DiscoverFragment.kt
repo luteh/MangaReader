@@ -1,4 +1,4 @@
-package com.luteh.mangareader.ui.discover
+package com.luteh.mangareader.ui.fragment.discover
 
 
 import android.annotation.SuppressLint
@@ -11,23 +11,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.Common
 import com.luteh.mangareader.common.base.BaseFragment
 import com.luteh.mangareader.di.component.DaggerFragmentComponent
 import com.luteh.mangareader.di.module.FragmentModule
-import com.luteh.mangareader.model.Manga
-import com.luteh.mangareader.ui.discover.adapter.MangaAdapter
+import com.luteh.mangareader.data.model.Manga
+import com.luteh.mangareader.ui.fragment.discover.adapter.MangaAdapter
 import com.luteh.mangareader.ui.main.DiscoverContract
-import io.reactivex.Flowable
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.discover_dialog_sort_by.view.*
 import kotlinx.android.synthetic.main.discover_fragment.*
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**

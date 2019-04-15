@@ -1,4 +1,4 @@
-package com.luteh.mangareader.ui.viewcomic
+package com.luteh.mangareader.ui.activity.viewcomic
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,10 +1,10 @@
-package com.luteh.mangareader.ui.home
+package com.luteh.mangareader.ui.activity.home
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.base.BaseActivity
-import com.luteh.mangareader.ui.discover.DiscoverFragment
+import com.luteh.mangareader.ui.fragment.discover.DiscoverFragment
 import kotlinx.android.synthetic.main.home_activity.*
 import com.luteh.mangareader.common.utils.BottomNavigationBehavior
 import androidx.coordinatorlayout.widget.CoordinatorLayout

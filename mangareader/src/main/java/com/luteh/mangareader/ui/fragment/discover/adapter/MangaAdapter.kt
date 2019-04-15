@@ -1,8 +1,7 @@
-package com.luteh.mangareader.ui.discover.adapter
+package com.luteh.mangareader.ui.fragment.discover.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.text.method.TextKeyListener.clear
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.luteh.mangareader.ui.chapter.ChapterActivity
+import com.luteh.mangareader.ui.activity.chapter.ChapterActivity
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.utils.IRecyclerClick
 import com.luteh.mangareader.common.Constants
-import com.luteh.mangareader.model.Manga
+import com.luteh.mangareader.data.model.Manga
 import com.squareup.picasso.Picasso
-import io.reactivex.Flowable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import java.util.Collections.addAll
 
 /**
  * Created by Luthfan Maftuh on 11/03/2019.

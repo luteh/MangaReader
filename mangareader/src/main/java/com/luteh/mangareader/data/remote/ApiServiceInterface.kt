@@ -1,12 +1,12 @@
-package com.luteh.mangareader.api
+package com.luteh.mangareader.data.remote
 
 import com.luteh.mangareader.common.Constants
-import com.luteh.mangareader.model.MangaList
+import com.luteh.mangareader.data.remote.ApiEndPoint.ENDPOINT_MANGA_LIST
+import com.luteh.mangareader.data.model.MangaListResponse
 import io.reactivex.Observable
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 /**
  * Created by Luthfan Maftuh on 15/03/2019.
@@ -14,11 +14,11 @@ import retrofit2.http.Query
  */
 interface ApiServiceInterface {
 
-    @GET("api/list/0/")
+    @GET(ENDPOINT_MANGA_LIST)
     fun getMangaList(
 //        @Query("p") index: Int
 //        @Query("l") totalItems: Int = 25
-    ): Observable<MangaList>
+    ): Observable<MangaListResponse>
 
     companion object Factory {
         fun create(): ApiServiceInterface {

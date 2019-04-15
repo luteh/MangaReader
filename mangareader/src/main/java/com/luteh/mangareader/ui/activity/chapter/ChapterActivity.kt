@@ -1,4 +1,4 @@
-package com.luteh.mangareader.ui.chapter
+package com.luteh.mangareader.ui.activity.chapter
 
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -8,7 +8,7 @@ import com.luteh.mangareader.common.Common
 import com.luteh.mangareader.common.base.BaseActivity
 import com.luteh.mangareader.di.component.DaggerActivityComponent
 import com.luteh.mangareader.di.module.ActivityModule
-import com.luteh.mangareader.model.Chapter
+import com.luteh.mangareader.data.model.Chapter
 import kotlinx.android.synthetic.main.activity_chapter.*
 import javax.inject.Inject
 

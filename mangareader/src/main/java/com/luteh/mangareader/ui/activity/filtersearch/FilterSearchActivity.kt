@@ -1,4 +1,4 @@
-package com.luteh.mangareader.ui.filtersearch
+package com.luteh.mangareader.ui.activity.filtersearch
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +10,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.Common
-import com.luteh.mangareader.model.Comic
+import com.luteh.mangareader.data.model.Comic
 import kotlinx.android.synthetic.main.activity_filter_search.*
 import kotlin.collections.ArrayList
 
