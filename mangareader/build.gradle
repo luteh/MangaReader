@@ -86,4 +86,8 @@ dependencies {
 
     // LiveData & ViewModel
     implementation"android.arch.lifecycle:extensions:$lifecycle_version"
+
+    // Chuck HTTP inspector
+    debugImplementation "com.readystatesoftware.chuck:library:$chuck_version"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuck_version"
 }

@@ -1,5 +1,6 @@
 package com.luteh.mangareader.data.remote
 
+import com.luteh.mangareader.MangaReaderApplication
 import com.luteh.mangareader.common.Constants
 import com.luteh.mangareader.data.remote.ApiEndPoint.ENDPOINT_MANGA_LIST
 import com.luteh.mangareader.data.model.MangaListResponse
@@ -25,6 +26,7 @@ interface ApiServiceInterface {
             val retrofit = retrofit2.Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(MangaReaderApplication.client!!)
                 .baseUrl(Constants.BASE_URL)
                 .build()
 
