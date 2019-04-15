@@ -21,7 +21,7 @@ interface ApiServiceInterface {
 //        @Query("l") totalItems: Int = 25
     ): Observable<MangaListResponse>
 
-    companion object Factory {
+   /* companion object Factory {
         fun create(): ApiServiceInterface {
             val retrofit = retrofit2.Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -32,5 +32,5 @@ interface ApiServiceInterface {
 
             return retrofit.create(ApiServiceInterface::class.java)
         }
-    }
+    }*/
 }
