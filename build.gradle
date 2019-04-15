@@ -16,14 +16,6 @@ buildscript {
     }
 }
 
-ext {
-    retrofit_version = '2.3.0'
-    rxjava2_version = '2.2.7'
-    rxbinding_version = '3.0.0-alpha2'
-    rxandroid_version = '2.1.1'
-    dagger2_version = '2.15'
-}
-
 allprojects {
     repositories {
         google()
@@ -34,4 +26,14 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    retrofit_version = '2.3.0'
+    rxjava2_version = '2.2.7'
+    rxbinding_version = '3.0.0-alpha2'
+    rxandroid_version = '2.1.1'
+    dagger2_version = '2.16'
+    room_version = '2.1.0-alpha06'
+    lifecycle_version = '2.0.0'
 }
