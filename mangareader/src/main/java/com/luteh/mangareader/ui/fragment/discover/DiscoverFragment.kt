@@ -5,26 +5,19 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.app.Fragment
 import android.content.res.Configuration
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.Common
 import com.luteh.mangareader.common.base.BaseFragment
-import com.luteh.mangareader.di.component.DaggerFragmentComponent
-import com.luteh.mangareader.di.module.FragmentModule
-import com.luteh.mangareader.data.model.Manga
+import com.luteh.mangareader.data.model.api.Manga
 import com.luteh.mangareader.ui.fragment.discover.adapter.MangaAdapter
 import com.luteh.mangareader.ui.main.DiscoverContract
-import com.luteh.mangareader.ui.main.DiscoverPresenter
-import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.discover_dialog_sort_by.view.*
 import kotlinx.android.synthetic.main.discover_fragment.*
 import javax.inject.Inject

@@ -1,7 +1,7 @@
 package com.luteh.mangareader.ui.activity.chapter
 
 import com.luteh.mangareader.common.base.BaseContract
-import com.luteh.mangareader.data.model.Chapter
+import com.luteh.mangareader.data.model.api.Chapter
 
 /**
  * Created by Luthfan Maftuh on 14/03/2019.

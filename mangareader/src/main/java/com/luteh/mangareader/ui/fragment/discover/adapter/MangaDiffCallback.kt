@@ -1,7 +1,7 @@
 package com.luteh.mangareader.ui.fragment.discover.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.luteh.mangareader.data.model.Manga
+import com.luteh.mangareader.data.model.api.Manga
 
 /**
  * Created by Luthfan Maftuh on 19/03/2019.

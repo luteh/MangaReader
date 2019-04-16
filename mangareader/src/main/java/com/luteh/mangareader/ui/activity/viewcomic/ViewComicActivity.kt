@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.Common
-import com.luteh.mangareader.data.model.Chapter
+import com.luteh.mangareader.data.model.api.Chapter
 import com.wajahatkarim3.easyflipviewpager.BookFlipPageTransformer
 import kotlinx.android.synthetic.main.activity_view_comic.*
 

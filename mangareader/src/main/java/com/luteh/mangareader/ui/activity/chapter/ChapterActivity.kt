@@ -8,7 +8,7 @@ import com.luteh.mangareader.common.Common
 import com.luteh.mangareader.common.base.BaseActivity
 import com.luteh.mangareader.di.component.DaggerActivityComponent
 import com.luteh.mangareader.di.module.ActivityModule
-import com.luteh.mangareader.data.model.Chapter
+import com.luteh.mangareader.data.model.api.Chapter
 import kotlinx.android.synthetic.main.activity_chapter.*
 import javax.inject.Inject
 

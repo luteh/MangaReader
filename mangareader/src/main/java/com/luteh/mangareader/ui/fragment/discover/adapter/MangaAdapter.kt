@@ -13,7 +13,7 @@ import com.luteh.mangareader.ui.activity.chapter.ChapterActivity
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.utils.IRecyclerClick
 import com.luteh.mangareader.common.Constants
-import com.luteh.mangareader.data.model.Manga
+import com.luteh.mangareader.data.model.api.Manga
 import com.squareup.picasso.Picasso
 
 /**

@@ -1,4 +1,4 @@
-package com.luteh.mangareader.data.model
+package com.luteh.mangareader.data.model.api
 
 import com.google.gson.annotations.SerializedName
 

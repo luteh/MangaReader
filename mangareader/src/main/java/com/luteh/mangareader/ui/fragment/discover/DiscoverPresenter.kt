@@ -33,7 +33,6 @@ class DiscoverPresenter : BaseViewModel(), DiscoverContract.Presenter {
 
     override fun attach(view: DiscoverContract.View) {
         this.view = view
-
     }
 
     override fun onCleared() {

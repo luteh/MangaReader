@@ -11,7 +11,7 @@ import com.luteh.mangareader.R
 import com.luteh.mangareader.ui.activity.viewcomic.ViewComicActivity
 import com.luteh.mangareader.common.utils.IRecyclerClick
 import com.luteh.mangareader.common.Common
-import com.luteh.mangareader.data.model.Chapter
+import com.luteh.mangareader.data.model.api.Chapter
 
 /**
  * Created by Luthfan Maftuh on 11/03/2019.

@@ -10,7 +10,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.luteh.mangareader.R
 import com.luteh.mangareader.common.Common
-import com.luteh.mangareader.data.model.Comic
+import com.luteh.mangareader.data.model.api.Comic
 import kotlinx.android.synthetic.main.activity_filter_search.*
 import kotlin.collections.ArrayList
 
