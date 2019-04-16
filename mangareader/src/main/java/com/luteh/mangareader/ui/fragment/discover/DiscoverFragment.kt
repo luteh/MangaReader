@@ -5,11 +5,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.app.Fragment
 import android.content.res.Configuration
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.luteh.mangareader.R
@@ -20,10 +23,10 @@ import com.luteh.mangareader.di.module.FragmentModule
 import com.luteh.mangareader.data.model.Manga
 import com.luteh.mangareader.ui.fragment.discover.adapter.MangaAdapter
 import com.luteh.mangareader.ui.main.DiscoverContract
+import com.luteh.mangareader.ui.main.DiscoverPresenter
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.discover_dialog_sort_by.view.*
 import kotlinx.android.synthetic.main.discover_fragment.*
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -31,6 +34,8 @@ import javax.inject.Inject
  *
  */
 class DiscoverFragment : BaseFragment(), DiscoverContract.View {
+
+    private val TAG = "DiscoverFragment"
 
     @Inject
     lateinit var presenter: DiscoverContract.Presenter
@@ -40,21 +45,18 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     private lateinit var adapter: MangaAdapter
 //    private var adapter: RecyclerView.Adapter<*>? = null
 
-    private var disposable: Disposable? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fragmentComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.discover_fragment, container, false)
-    }
-
-    override fun injectDependency() {
-        val discoverComponent = DaggerFragmentComponent.builder()
-            .fragmentModule(FragmentModule())
-            .build()
-        discoverComponent.inject(this)
+        return LayoutInflater.from(inflater.context)
+            .inflate(R.layout.discover_fragment, container, false)
     }
 
     override fun onInit() {
@@ -68,12 +70,6 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
         initSwipeRefresh()
 
         btn_discover_sort_by.setOnClickListener { showSortByDialog() }
-
-//        Slider.init(PicassoImageLoadingService())
-
-//        presenter.loadMangaListData()
-        pb_discover.visibility = View.VISIBLE
-        rv_discover.visibility = View.GONE
     }
 
     /**
@@ -81,7 +77,8 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
      */
     private fun showSortByDialog() {
         if (!::dialog.isInitialized) {
-            val view = LayoutInflater.from(context).inflate(R.layout.discover_dialog_sort_by, null)
+            val view =
+                LayoutInflater.from(context).inflate(R.layout.discover_dialog_sort_by, null)
             dialog = AlertDialog.Builder(context!!)
                 .setTitle(R.string.title_dialog_sort_by)
                 .setView(view)
@@ -169,20 +166,21 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
         }
     }
 
+    override fun onStartLoading() {
+        pb_discover.visibility = View.VISIBLE
+        rv_discover.visibility = View.GONE
+    }
+
+    override fun onFinishLoading() {
+        pb_discover.visibility = View.GONE
+        rv_discover.visibility = View.VISIBLE
+    }
 
     override fun showErrorMessage(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.unsubscribe()
-    }
-
     override fun onSuccessLoadMangaListData(mangaList: MutableList<Manga>) {
-        pb_discover.visibility = View.GONE
-        rv_discover.visibility = View.VISIBLE
-
         Common.mangaList = mangaList
 
 //        sortAdapter(2, resources.getText(R.string.label_sort_by_updated))
@@ -212,9 +210,7 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     }
 
     override fun onDestroyView() {
-        if (disposable?.isDisposed ?: false) {
-            disposable?.dispose()
-        }
         super.onDestroyView()
+        presenter.unsubscribe()
     }
 }

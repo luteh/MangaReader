@@ -11,6 +11,8 @@ class DiscoverContract {
     interface View : BaseContract.View {
         fun showErrorMessage(message: String)
         fun onSuccessLoadMangaListData(mangaList: MutableList<Manga>)
+        fun onStartLoading()
+        fun onFinishLoading()
     }
 
     interface Presenter : BaseContract.Presenter<DiscoverContract.View> {
